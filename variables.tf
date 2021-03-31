@@ -35,7 +35,3 @@ variable "environment" {
 variable "resource_group_name" {
 
 }
-
-variable "server_app_secret" {
-  
-}

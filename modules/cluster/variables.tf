@@ -33,7 +33,3 @@ variable "display_name_prefix" {
 
 variable "environment" {
 }
-
-variable "server_app_secret" {
-  
-}

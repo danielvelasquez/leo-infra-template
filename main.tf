@@ -17,7 +17,6 @@ module "cluster" {
   resource_group_name  = var.resource_group_name
   environment          = var.environment
   tenant_id            = var.tenant_id 
-  server_app_secret    = var.server_app_secret
 }
 
 module "k8s" {
