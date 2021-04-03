@@ -1,7 +1,7 @@
-variable "serviceprincipal_id" {
+variable "backend_client_id" {
 }
 
-variable "serviceprincipal_key" {
+variable "backend_client_secret" {
 }
 
 variable "tenant_id" {
@@ -16,7 +16,7 @@ variable "kubernetes_version" {
   default = "1.19.6"
 }
 
-variable "ssh_key" {  
+variable "backend_ssh_key" {  
 }
 
 variable resource_group_name {
@@ -32,4 +32,10 @@ variable "display_name_prefix" {
 }
 
 variable "environment" {
+}
+
+#################### from k8s
+
+variable "db_name" {
+
 }

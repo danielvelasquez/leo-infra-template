@@ -18,12 +18,10 @@ resource "azurerm_subnet" "leo-sn" {
 }
 
 
-
-
 resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
   name                = "${var.prefix}-aks-cluster"
   location            = azurerm_resource_group.aks-rg.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = azurerm_resource_group.aks-rg.name
   dns_prefix          = var.prefix
   kubernetes_version  = var.kubernetes_version
 
@@ -44,14 +42,14 @@ resource "azurerm_kubernetes_cluster" "aks-leo-cluster" {
 
 
   service_principal {
-    client_id = var.serviceprincipal_id
-    client_secret = var.serviceprincipal_key
+    client_id = var.backend_client_id
+    client_secret = var.backend_client_secret
   }
   
   linux_profile {
     admin_username = "azureuser"
     ssh_key {
-      key_data = var.ssh_key
+      key_data = var.backend_ssh_key
     }
   }
   network_profile {

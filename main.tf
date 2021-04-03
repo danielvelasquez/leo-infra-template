@@ -1,30 +1,21 @@
 provider "azurerm" {
   subscription_id = var.subscription_id
-  client_id       = var.serviceprincipal_id
-  client_secret   = var.serviceprincipal_key
+  client_id       = var.backend_client_id
+  client_secret   = var.backend_client_secret
   tenant_id       = var.tenant_id
   
   features {}
 }
 
 module "cluster" {
-  source               = "./modules/cluster/"
-  serviceprincipal_id  = var.serviceprincipal_id
-  serviceprincipal_key = var.serviceprincipal_key
-  ssh_key              = var.ssh_key
-  location             = var.location
-  kubernetes_version   = var.kubernetes_version
-  resource_group_name  = var.resource_group_name
-  environment          = var.environment
-  tenant_id            = var.tenant_id 
-}
-
-module "k8s" {
-  source                 = "./modules/k8s/"
-  host                   = module.cluster.host
-  client_certificate     = base64decode(module.cluster.client_certificate)
-  client_key             = base64decode(module.cluster.client_key)
-  cluster_ca_certificate = base64decode(module.cluster.cluster_ca_certificate)
-  resource_group_name    = var.resource_group_name
-  location               = var.location
+  source                       = "./modules/cluster/"
+  backend_client_id            = var.backend_client_id
+  backend_client_secret        = var.backend_client_secret
+  backend_ssh_key              = var.backend_ssh_key
+  location                     = var.location
+  kubernetes_version           = var.kubernetes_version
+  resource_group_name          = var.resource_group_name
+  environment                  = var.environment
+  tenant_id                    = var.tenant_id 
+  db_name                      = var.db_name
 }

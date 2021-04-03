@@ -17,3 +17,7 @@ output "client_key" {
 output "host" {
   value = azurerm_kubernetes_cluster.aks-leo-cluster.kube_config.0.host
 }
+
+output "resource_group_name" {
+  value = azurerm_resource_group.aks-rg.name
+}
