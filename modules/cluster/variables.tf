@@ -1,3 +1,6 @@
+variable "subscription_id" {
+}
+
 variable "backend_client_id" {
 }
 

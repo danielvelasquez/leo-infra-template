@@ -1,14 +1,6 @@
-provider "azurerm" {
-  subscription_id = var.subscription_id
-  client_id       = var.backend_client_id
-  client_secret   = var.backend_client_secret
-  tenant_id       = var.tenant_id
-  
-  features {}
-}
-
 module "cluster" {
   source                       = "./modules/cluster/"
+  subscription_id              = var.subscription_id
   backend_client_id            = var.backend_client_id
   backend_client_secret        = var.backend_client_secret
   backend_ssh_key              = var.backend_ssh_key
