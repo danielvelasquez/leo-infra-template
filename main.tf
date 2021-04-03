@@ -1,5 +1,5 @@
 module "cluster" {
-  source                       = "./modules/cluster/"
+  source                       = "github.com/danielvelasquez/terraform-azurerm-multitier-app-template?ref=v21.04"
   subscription_id              = var.subscription_id
   backend_client_id            = var.backend_client_id
   backend_client_secret        = var.backend_client_secret
